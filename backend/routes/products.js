@@ -5,6 +5,7 @@ const router = express.Router();
 
 
 
+
 router.get(`/`, async  (req, res) =>{
     const productList = await Product.find().populate('category'); // select('name brand -_id') fetch and display perticular field and -_id for eliminate id in get method
     if(!productList){
@@ -13,7 +14,7 @@ router.get(`/`, async  (req, res) =>{
     res.send(productList);
 })
 
-// get data by passing id
+// get the data by passing id
 router.get(`/:id`, async  (req, res) =>{
     const product = await Product.findById(req.params.id).populate('category');
     if(!product){
